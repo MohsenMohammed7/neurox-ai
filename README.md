@@ -26,7 +26,15 @@
 ## الإعداد
 انسخ `.env.example` إلى `.env.local` في جذر المشروع، ثم أدخل مفتاح مزود الذكاء الاصطناعي في `AI_API_KEY` واضبط `AI_BASE_URL` و`AI_MODEL` حسب المزود. لا ترفع ملف `.env.local` إلى GitHub.
 
-## تشغيل كامل باستخدام Docker\nانسخ `.env.example` إلى `.env` في جذر المشروع، ثم أضف مفتاح مزود الذكاء الاصطناعي. شغّل:\n\n```bash\ndocker compose up --build -d\n```\nافتح `http://localhost:3000`. لإيقاف الخدمات: `docker compose down`. تبقى قاعدة البيانات محفوظة في Docker volume باسم `neurox-data`.\n\n## تشغيل الواجهة محلياً
+## تشغيل كامل باستخدام Docker
+انسخ `.env.example` إلى `.env` في جذر المشروع، ثم أضف مفتاح مزود الذكاء الاصطناعي. شغّل:
+
+```bash
+docker compose up --build -d
+```
+افتح `http://localhost:3000`. لإيقاف الخدمات: `docker compose down`. تبقى قاعدة البيانات محفوظة في Docker volume باسم `neurox-data`.
+
+## تشغيل الواجهة محلياً
 ```bash
 npm install
 npm run dev

@@ -1,6 +1,7 @@
 import os
 import sqlite3
 import uuid
+from contextlib import contextmanager
 from pathlib import Path
 from typing import Optional
 
@@ -21,13 +22,17 @@ app.add_middleware(
 DB_PATH = os.getenv("NEUROX_DB_PATH", str(Path(__file__).resolve().parent.parent / "data" / "neurox.db"))
 
 
+@contextmanager
 def connect_db():
     path = Path(DB_PATH)
     path.parent.mkdir(parents=True, exist_ok=True)
     db = sqlite3.connect(path, timeout=15)
     db.row_factory = sqlite3.Row
     db.execute("PRAGMA foreign_keys = ON")
-    return db
+    try:
+        yield db
+    finally:
+        db.close()
 
 
 def init_db():

@@ -11,3 +11,7 @@ __pycache__/
 !.env.example
 .DS_Store
 *.log
+# Local application data
+backend/data/
+*.db
+*.sqlite3

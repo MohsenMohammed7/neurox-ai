@@ -1,0 +1,23 @@
+{
+  "name": "NeuroX AI",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    }
+  },
+  "forwardPorts": [3000, 8000],
+  "portsAttributes": {
+    "3000": {
+      "label": "NeuroX AI Web",
+      "onAutoForward": "openBrowser"
+    },
+    "8000": {
+      "label": "NeuroX AI API",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "npm install && pip install -r backend/requirements.txt",
+  "postStartCommand": "bash .devcontainer/start.sh",
+  "remoteUser": "node"
+}

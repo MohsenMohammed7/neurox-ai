@@ -31,6 +31,10 @@ def connect_db():
     db.execute("PRAGMA foreign_keys = ON")
     try:
         yield db
+        db.commit()
+    except Exception:
+        db.rollback()
+        raise
     finally:
         db.close()
 
